@@ -27,7 +27,6 @@ export class Parallel {
       this.currentJobsCount < this.maxConcurrentJobs &&
       this.jobQueue.length > 0
     ) {
-  
       const [nextJob, nextJobIndex] = this.jobQueue.shift()!;
       this.runJob(nextJob, nextJobIndex);
     }
@@ -76,5 +75,5 @@ const runner = new Parallel(2);
           setTimeout(() => resolve(5), 30);
         }),
     ),
-  ); 
+  );
 })();
