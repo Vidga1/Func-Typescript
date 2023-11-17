@@ -49,31 +49,3 @@ export class Parallel {
     });
   }
 }
-
-const runner = new Parallel(2);
-(async () => {
-  console.log(
-    await runner.jobs(
-      () =>
-        new Promise((resolve) => {
-          setTimeout(() => resolve(1), 10);
-        }),
-      () =>
-        new Promise((resolve) => {
-          setTimeout(() => resolve(2), 50);
-        }),
-      () =>
-        new Promise((resolve) => {
-          setTimeout(() => resolve(3), 20);
-        }),
-      () =>
-        new Promise((resolve) => {
-          setTimeout(() => resolve(4), 90);
-        }),
-      () =>
-        new Promise((resolve) => {
-          setTimeout(() => resolve(5), 30);
-        }),
-    ),
-  );
-})();

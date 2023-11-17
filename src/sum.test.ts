@@ -1,27 +1,25 @@
-import { createSumFunction, SumFunction } from "./sum";
+import { createSumFunction } from "./sum";
 
 describe("createSumFunction", () => {
-  test("should return 0 when no arguments are passed", () => {
-    const sum: SumFunction = createSumFunction();
-    expect(sum.valueOf()).toBe(0);
+  it("should correctly sum up values on sequential calls", () => {
+    const sum = createSumFunction();
+    expect(sum(1)(2)(3).valueOf()).toBe(6);
   });
 
-  test("should correctly add numbers", () => {
-    const s = createSumFunction();
-    expect(s(1).valueOf()).toBe(1);
-    expect(s(1)(2).valueOf()).toBe(3);
-    expect(s(3)(4)(5).valueOf()).toBe(12);
+  it("should handle calls without arguments", () => {
+    const sum = createSumFunction();
+    expect(sum().valueOf()).toBe(0);
+    expect(sum(5)().valueOf()).toBe(5);
+    expect(sum(3)(4)().valueOf()).toBe(7);
   });
 
-  test("should correctly handle chaining of returned functions", () => {
-    const s3 = createSumFunction(3);
-    expect(s3(5).valueOf()).toBe(8);
-    expect(s3(6).valueOf()).toBe(9);
+  it("should correctly represent the sum as a string", () => {
+    const sum = createSumFunction();
+    expect(sum(1)(2)(3).toString()).toBe("6");
   });
 
-  test("toString should return the sum as a string", () => {
-    const s = createSumFunction();
-    expect(s(1)(2).toString()).toBe("3");
-    expect(s(3)(4)(5).toString()).toBe("12");
+  it("should start from provided initial value", () => {
+    const sum = createSumFunction(10);
+    expect(sum(5)(10).valueOf()).toBe(25);
   });
 });

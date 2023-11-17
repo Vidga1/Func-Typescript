@@ -23,17 +23,3 @@ export function semverSort(versions: string[]): string[] {
   // Создаем копию массива перед сортировкой
   return [...versions].sort(compareVersions);
 }
-
-// Использование функции с новой реализацией
-const versions = [
-  "1.0.5",
-  "2.5.0",
-  "0.12.0",
-  "1",
-  "1.23.45",
-  "1.4.50",
-  "1.2.3.4.5.6.7",
-];
-const sortedVersions = semverSort(versions);
-console.log(sortedVersions);
-console.log(versions);

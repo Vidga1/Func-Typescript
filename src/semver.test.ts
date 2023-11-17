@@ -21,9 +21,9 @@ describe("semverSort", () => {
 
   test("should not modify the input array", () => {
     const versions = ["1.0.1", "1.0", "1"];
-    const copyOfVersions = [...versions]; // Создаем копию до сортировки
-    const sortedVersions = semverSort(versions); // Получаем отсортированный массив, не изменяя исходный
-    expect(versions).toEqual(copyOfVersions); // Проверяем, что исходный массив не изменен
-    expect(sortedVersions).not.toEqual(versions); // Проверяем, что результат сортировки отличается от исходного
+    const copyOfVersions = [...versions];
+    const sortedVersions = semverSort(versions);
+    expect(versions).toEqual(copyOfVersions);
+    expect(sortedVersions).not.toEqual(versions);
   });
 });
